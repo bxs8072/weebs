@@ -22,7 +22,7 @@ jobs:
       - name: Java Setup
         uses: actions/setup-java@v3.5.0
         with:
-          java-version: '18.x'
+          java-version: '12.x'
         
       - name: Flutter action
         uses: subosito/flutter-action@v2.7.1
