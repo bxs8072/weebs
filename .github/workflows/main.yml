@@ -10,10 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Update KeyStore password in gradle properties
-      run: sed -i 's/#{ANDROID_KEYSTORE_PASSWORD}#/${{ secrets.ANDROID_KEYSTORE_PASSWORD }}/g' android/key.properties
-    - name: Update KeyStore key password in gradle properties
-      run: sed -i 's/#{ANDROID_KEY_PASSWORD}#/${{ secrets.ANDROID_KEY_PASSWORD }}/g' android/key.properties
+    
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
