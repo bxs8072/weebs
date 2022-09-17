@@ -17,7 +17,6 @@ void main() async {
 
 class Weebs extends StatelessWidget {
   const Weebs({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ThemeProvider(
