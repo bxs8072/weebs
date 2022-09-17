@@ -19,10 +19,10 @@ jobs:
     runs-on: macos-latest
     steps:
       # Set up Flutter.
-      - name: Clone Flutter repository with main channel
+      - name: Clone Flutter repository with stable channel
         uses: subosito/flutter-action@de3cdb9a4b2f535dc0fa0da445a46b10b1bfefc7
         with:
-          channel: main
+          flutter-version: '3.0.1'
       - run: flutter doctor -v
 
       # Checkout gallery code and get packages.
