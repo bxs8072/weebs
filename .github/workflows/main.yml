@@ -22,7 +22,8 @@ jobs:
       - name: Java Setup
         uses: actions/setup-java@v3.5.0
         with:
-          java-version: '12.x'
+          distribution: 'temurin'
+          java-version: '17'
         
       - name: Flutter action
         uses: subosito/flutter-action@v2.7.1
@@ -31,14 +32,37 @@ jobs:
           channel: 'stable'
       
       - run: flutter pub get
-      - run: flutter build appbundle
       
-      - name: Push to Releases
-        uses: ncipollo/release-action@v1.10.0
+      - name: Signing Key
+        id: android_keystore
+        uses: timheuer/base64-to-file@v1.1
         with:
-          artifacts: "build/app/outputs/bundle/release/app-release.aab"
-          tag: v12.0.${{ github.run_number }}
-          token: ${{ secrets.TOKEN }}
+          fileName: key.jks
+          encodedString: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          
+      - name: Create key.properties
+        run: |
+          echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/key.properties
+          echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
+          
+      - name: Building App Bundle
+        run: flutter build appbundle
+      
+      - name: Releasing app to google play 
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+          packageName: com.pain.freeforweebs
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          track: production
+          status: inProgress
+          inAppUpdatePriority: 2
+          userFraction: 0.9
+          whatsNewDirectory: distribution/whatsnew
+          mappingFile: build/app/outputs/mapping/release/mapping.txt
+          debugSymbols: build/app/intermediates/merged_native_libs/release/out/lib
           
         
       
