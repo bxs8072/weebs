@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "129248860638",
+    "project_id": "weebs-cf327",
+    "storage_bucket": "weebs-cf327.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129248860638:android:d73f9c0224cc5cad44e54f",
+        "android_client_info": {
+          "package_name": "com.pain.freeforweebs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129248860638-c3c3c18433st64bkrn20krm7uepct4or.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZonabFKFB2hTMBWfjhEov0rfOSZ28Pyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129248860638-c3c3c18433st64bkrn20krm7uepct4or.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "129248860638-2e7q7o4rnmfqhj5b1miv6kgtrtiif237.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.freeforweebs"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
