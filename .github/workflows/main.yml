@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     name: Build APK and Create release
-    needs: [ version ]
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
