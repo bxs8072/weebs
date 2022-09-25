@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Release App to Playstore
 
 # Controls when the workflow will run
 on:
@@ -48,7 +48,7 @@ jobs:
           echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
           
       - name: Building App Bundle
-        run: flutter build appbundle
+        run: flutter build appbundle --build-number
       
       - name: Releasing app to google play 
         uses: r0adkll/upload-google-play@v1
